@@ -11,14 +11,14 @@ const weddingData = {
     kuralText: 'அன்பும் அறனும் உடைத்தாயின் இல்வாழ்க்கை\nபண்பும் பயனும் அது.',
     kuralAttribution: '— திருக்குறள் 45',
     blessing:
-      "You're cordially invited\nதங்களை அன்புடன் வரவேற்கிறோம்",
+      "தங்களை அன்புடன் வரவேற்கிறோம்",
   },
 
   couple: {
     brideName: 'Keerthana',
     groomName: 'Dinesh',
     brideParents: 'D/o Mr. Chandiran\nMrs. Panjavarnam',
-    groomParents: 'S/o Mrs. Karuppiah \nMrs. Rajeswari\nBrother. Mahesh',
+    groomParents: 'S/o Mrs. Karuppiah \n Mrs. Rajeswari\nBrother. Mahesh',
   },
 
   wedding: {

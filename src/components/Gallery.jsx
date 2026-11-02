@@ -15,6 +15,7 @@ function urlFor(filename) {
 }
 
 const photos = weddingData.gallery
+  .slice(0, 2)
   .map((item) => ({ src: urlFor(item.file), caption: item.caption }))
   .filter((p) => p.src)
 

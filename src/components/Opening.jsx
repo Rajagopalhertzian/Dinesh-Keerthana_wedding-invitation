@@ -29,14 +29,12 @@ export default function Opening({ onOpen }) {
   const revealTextRef = useRef(null)
   const flourishRef = useRef(null)
   const stickerRef = useRef(null)
-  const hintRef = useRef(null)
   const cornersRef = useRef(null)
   const openedRef = useRef(false)
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
     tl.fromTo([titleRef.current, sealRef.current], { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 1, stagger: 0.15 })
-      .fromTo(hintRef.current, { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.4')
       .to(sealRef.current, {
         boxShadow: '0 0 0 16px rgba(201,162,75,0)',
         repeat: -1,
@@ -44,7 +42,12 @@ export default function Opening({ onOpen }) {
         duration: 1.6,
         ease: 'sine.inOut',
       })
-    return () => tl.kill()
+    const autoOpenTimer = window.setTimeout(() => handleOpen(), 2500)
+
+    return () => {
+      window.clearTimeout(autoOpenTimer)
+      tl.kill()
+    }
   }, [])
 
   function spawnSparkles(x, y) {
@@ -217,8 +220,8 @@ export default function Opening({ onOpen }) {
         </div>
 
         <div ref={titleRef} className="absolute top-[13%] left-0 right-0 flex flex-col items-center gap-1 z-10">
-          <span className="font-display text-2xl sm:text-3xl text-maroon-deep">
-            {weddingData.couple.groomName.charAt(0)} &amp; {weddingData.couple.brideName.charAt(0)}
+          <span className="font-display text-lg sm:text-xl text-maroon-deep text-center px-3">
+            {weddingData.couple.groomName} &amp; {weddingData.couple.brideName}
           </span>
           <span className="text-[10px] tracking-[0.3em] text-maroon/70">WEDDING INVITATION</span>
         </div>
@@ -231,12 +234,10 @@ export default function Opening({ onOpen }) {
           className="absolute inset-0 z-20 [backface-visibility:hidden]"
           style={{ transformOrigin: '0% 50%' }}
         >
-          <button
-            type="button"
-            onClick={handleOpen}
-            aria-label="Open wedding invitation"
+          <div
             ref={sealRef}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex items-center justify-center border border-gold cursor-pointer"
+            aria-hidden="true"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex items-center justify-center border border-gold pointer-events-none"
             style={{ background: 'radial-gradient(circle at 35% 30%, #F2DEE1, #D8A3AA 75%)', boxShadow: '0 6px 16px rgba(90,22,32,0.25)' }}
           >
             {/* decorative beaded ring around the seal — simple and safe, no overlapping paths */}
@@ -251,12 +252,9 @@ export default function Opening({ onOpen }) {
               })}
             </svg>
             <span className="font-display text-2xl text-maroon-deep tracking-wide">{weddingData.couple.groomName.charAt(0)} • {weddingData.couple.brideName.charAt(0)}</span>
-          </button>
+          </div>
         </div>
 
-        <p ref={hintRef} className="absolute left-0 right-0 text-center text-[11px] tracking-[0.15em] text-maroon/60 z-10" style={{ top: 'calc(50% + 62px)' }}>
-          tap the seal to open
-        </p>
       </div>
     </section>
   )

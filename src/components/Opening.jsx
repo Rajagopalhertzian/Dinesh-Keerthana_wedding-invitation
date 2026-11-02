@@ -180,7 +180,7 @@ export default function Opening({ onOpen }) {
               no manual pixel offsets, so nothing can overlap regardless of card size */}
           <div className="absolute left-0 right-0 bottom-3 flex flex-col items-center gap-2 px-6">
             <p ref={revealTextRef} className="text-center font-display text-xl sm:text-2xl text-maroon-deep">
-              You're cordially invited
+              தங்களை அன்புடன் வரவேற்கிறோம்
             </p>
             <div ref={flourishRef} className="flex items-center gap-2">
               <span className="w-7 h-px bg-gold-soft" />

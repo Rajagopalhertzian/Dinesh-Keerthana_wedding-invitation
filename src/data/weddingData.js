@@ -16,7 +16,7 @@ const weddingData = {
 
   couple: {
     brideName: 'Keerthana',
-    groomName: 'Dinesh',
+    groomName: 'Dhinesh',
     brideParents: 'D/o Mr. Chandiran\nMrs. Panjavarnam',
     groomParents: 'S/o Mr. Karuppiah \n Mrs. Rajeswari\nBrother. Mahesh',
   },
@@ -46,7 +46,7 @@ const weddingData = {
 
   rsvp: {
     whatsappNumber: '919952745836', // include country code, digits only
-    message: "We're delighted to accept the invitation for Dinesh & Keerthana's wedding!",
+    message: "We're delighted to accept the invitation for Dhinesh & Keerthana's wedding!",
   },
 
   // Each entry becomes one card in the "Our Story" section

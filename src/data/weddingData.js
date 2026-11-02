@@ -18,7 +18,7 @@ const weddingData = {
     brideName: 'Keerthana',
     groomName: 'Dinesh',
     brideParents: 'D/o Mr. Chandiran\nMrs. Panjavarnam',
-    groomParents: 'S/o Mrs. Karuppiah \n Mrs. Rajeswari\nBrother. Mahesh',
+    groomParents: 'S/o Mr. Karuppiah \n Mrs. Rajeswari\nBrother. Mahesh',
   },
 
   wedding: {

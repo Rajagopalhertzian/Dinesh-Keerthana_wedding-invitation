@@ -30,23 +30,34 @@ export default function Opening({ onOpen }) {
   const flourishRef = useRef(null)
   const stickerRef = useRef(null)
   const cornersRef = useRef(null)
+  const sealPulseRef = useRef(null)
   const openedRef = useRef(false)
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-    tl.fromTo([titleRef.current, sealRef.current], { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 1, stagger: 0.15 })
-      .to(sealRef.current, {
-        boxShadow: '0 0 0 16px rgba(201,162,75,0)',
-        repeat: -1,
-        yoyo: true,
-        duration: 1.6,
-        ease: 'sine.inOut',
-      })
-    const autoOpenTimer = window.setTimeout(() => handleOpen(), 2500)
+    const intro = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    intro.fromTo(
+      [titleRef.current, sealRef.current],
+      { opacity: 0, y: -14 },
+      { opacity: 1, y: 0, duration: 1, stagger: 0.15 }
+    )
+
+    // Keep the decorative seal pulse separate from the intro timeline so
+    // the repeating tween cannot interfere with the automatic opening.
+    sealPulseRef.current = gsap.to(sealRef.current, {
+      boxShadow: '0 0 0 16px rgba(201,162,75,0)',
+      repeat: -1,
+      yoyo: true,
+      duration: 1.6,
+      ease: 'sine.inOut',
+      delay: 0.8,
+    })
+
+    const autoOpenTimer = window.setTimeout(handleOpen, 1500)
 
     return () => {
       window.clearTimeout(autoOpenTimer)
-      tl.kill()
+      intro.kill()
+      sealPulseRef.current?.kill()
     }
   }, [])
 
@@ -94,6 +105,7 @@ export default function Opening({ onOpen }) {
   function handleOpen() {
     if (openedRef.current) return
     openedRef.current = true
+    sealPulseRef.current?.kill()
 
     const rect = sealRef.current.getBoundingClientRect()
     spawnSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2)
@@ -103,8 +115,7 @@ export default function Opening({ onOpen }) {
 
     const tl = gsap.timeline()
 
-    tl.to(hintRef.current, { opacity: 0, duration: 0.3 })
-      .addLabel('flaps', '+=0.1')
+    tl.addLabel('flaps', '+=0.1')
       // the left flap AND the seal rotate together, in perfect sync, around the
       // same hinge — that's what makes the seal look physically attached to it
       .fromTo(

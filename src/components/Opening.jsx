@@ -29,14 +29,12 @@ export default function Opening({ onOpen }) {
   const revealTextRef = useRef(null)
   const flourishRef = useRef(null)
   const stickerRef = useRef(null)
-  const hintRef = useRef(null)
   const cornersRef = useRef(null)
   const openedRef = useRef(false)
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
     tl.fromTo([titleRef.current, sealRef.current], { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 1, stagger: 0.15 })
-      .fromTo(hintRef.current, { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.4')
       .to(sealRef.current, {
         boxShadow: '0 0 0 16px rgba(201,162,75,0)',
         repeat: -1,
@@ -44,7 +42,12 @@ export default function Opening({ onOpen }) {
         duration: 1.6,
         ease: 'sine.inOut',
       })
-    return () => tl.kill()
+    const autoOpenTimer = window.setTimeout(() => handleOpen(), 2500)
+
+    return () => {
+      window.clearTimeout(autoOpenTimer)
+      tl.kill()
+    }
   }, [])
 
   function spawnSparkles(x, y) {
@@ -254,9 +257,6 @@ export default function Opening({ onOpen }) {
           </button>
         </div>
 
-        <p ref={hintRef} className="absolute left-0 right-0 text-center text-[11px] tracking-[0.15em] text-maroon/60 z-10" style={{ top: 'calc(50% + 62px)' }}>
-          tap the seal to open
-        </p>
       </div>
     </section>
   )

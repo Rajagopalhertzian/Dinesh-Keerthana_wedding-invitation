@@ -7,7 +7,7 @@
 
 const weddingData = {
   invocation: {
-    tamilHeading: 'திருமணம் அழைப்பிதழ்',
+    tamilHeading: 'திருமண அழைப்பிதழ்',
     kuralText: 'அன்பும் அறனும் உடைத்தாயின் இல்வாழ்க்கை\nபண்பும் பயனும் அது.',
     kuralAttribution: '— திருக்குறள் 45',
     blessing:

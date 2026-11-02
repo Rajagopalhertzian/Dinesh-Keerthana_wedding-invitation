@@ -220,8 +220,8 @@ export default function Opening({ onOpen }) {
         </div>
 
         <div ref={titleRef} className="absolute top-[13%] left-0 right-0 flex flex-col items-center gap-1 z-10">
-          <span className="font-display text-2xl sm:text-3xl text-maroon-deep">
-            {weddingData.couple.groomName.charAt(0)} &amp; {weddingData.couple.brideName.charAt(0)}
+          <span className="font-display text-lg sm:text-xl text-maroon-deep text-center px-3">
+            {weddingData.couple.groomName} &amp; {weddingData.couple.brideName}
           </span>
           <span className="text-[10px] tracking-[0.3em] text-maroon/70">WEDDING INVITATION</span>
         </div>

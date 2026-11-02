@@ -234,12 +234,10 @@ export default function Opening({ onOpen }) {
           className="absolute inset-0 z-20 [backface-visibility:hidden]"
           style={{ transformOrigin: '0% 50%' }}
         >
-          <button
-            type="button"
-            onClick={handleOpen}
-            aria-label="Open wedding invitation"
+          <div
             ref={sealRef}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex items-center justify-center border border-gold cursor-pointer"
+            aria-hidden="true"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex items-center justify-center border border-gold pointer-events-none"
             style={{ background: 'radial-gradient(circle at 35% 30%, #F2DEE1, #D8A3AA 75%)', boxShadow: '0 6px 16px rgba(90,22,32,0.25)' }}
           >
             {/* decorative beaded ring around the seal — simple and safe, no overlapping paths */}
@@ -254,7 +252,7 @@ export default function Opening({ onOpen }) {
               })}
             </svg>
             <span className="font-display text-2xl text-maroon-deep tracking-wide">{weddingData.couple.groomName.charAt(0)} • {weddingData.couple.brideName.charAt(0)}</span>
-          </button>
+          </div>
         </div>
 
       </div>

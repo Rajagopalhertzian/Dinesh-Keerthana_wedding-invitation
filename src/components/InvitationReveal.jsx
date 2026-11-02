@@ -54,13 +54,15 @@ export default function InvitationReveal() {
           {weddingData.invocation.blessing}
         </p>
 
-        <div ref={namesRef} className="mt-4 flex flex-col items-center justify-center gap-2">
-          <h1 className="font-display text-2xl sm:text-3xl text-maroon-deep text-center">
-            {weddingData.couple.groomName} &amp; {weddingData.couple.brideName}
-          </h1>
-          <div className="flex items-start justify-center gap-4 sm:gap-8">
-            <p className="text-[10px] sm:text-[11px] text-ink/60 leading-snug max-w-[9rem] whitespace-pre-line">{weddingData.couple.groomParents}</p>
-            <p className="text-[10px] sm:text-[11px] text-ink/60 leading-snug max-w-[9rem] whitespace-pre-line">{weddingData.couple.brideParents}</p>
+        <div ref={namesRef} className="mt-4 flex items-start justify-center gap-4 sm:gap-8">
+          <div className="flex flex-col items-center">
+            <h1 className="font-display text-2xl sm:text-3xl text-maroon-deep">{weddingData.couple.groomName}</h1>
+            <p className="mt-1 text-[10px] sm:text-[11px] text-ink/60 leading-snug max-w-[9rem] whitespace-pre-line">{weddingData.couple.groomParents}</p>
+          </div>
+          <span className="font-display text-xl italic text-gold mt-1.5">&amp;</span>
+          <div className="flex flex-col items-center">
+            <h1 className="font-display text-2xl sm:text-3xl text-maroon-deep">{weddingData.couple.brideName}</h1>
+            <p className="mt-1 text-[10px] sm:text-[11px] text-ink/60 leading-snug max-w-[9rem] whitespace-pre-line">{weddingData.couple.brideParents}</p>
           </div>
         </div>
 
